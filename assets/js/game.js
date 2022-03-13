@@ -146,18 +146,31 @@ var shop = function() {
     //ask player what they'd like to do
     var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
     switch (shopOptionPrompt) {
+        case "REFILL": //in case of all caps
         case "refill":
+            if (playerMoney >= 7) {
             window.alert("Refilling player's health by 20 for 7 coin.");
             //increase health and decrease money
             playerHealth = playerHealth + 20;
             playerMoney = playerMoney - 7;
+    } 
+    else {
+        window.alert("Insufficient Coin!")
+    }
             break;
+        case "UPGRADE": //in case of all caps     
         case "upgrade":
+            if (playerMoney >= 7) {
             window.alert("Upgrade attack power by 6 for 7 coin");
             //increase attack and decrease money    
             playerAttack = playerAttack +6
             playerMoney = playerMoney -7
+}
+else {
+    window.alert("Insufficient Coin!")
+}
             break;
+        case "LEAVE": //in case of all caps    
         case "leave":
             window.alert("Leaving Secret Shop");
             //do nothing, end function
