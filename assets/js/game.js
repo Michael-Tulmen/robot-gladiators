@@ -104,6 +104,14 @@ var fight = function(enemyName) {
   
       // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
       fight(pickedEnemyName);
+      //if we're not at the last enemy in the array
+      if (playerHealth > 0 && i < enemyNames.length - 1) {
+        var storeConfirm = window.confirm("The fight is over, visit the secret shop before next round?");
+        //if yes take to shop
+        if(storeConfirm){  
+        shop();
+        }
+      }
     }
     // if player isn't alive, stop the game
     else {
@@ -132,6 +140,34 @@ if (playAgainConfirm) {
 else {
     window.alert("Thank you for playing Robot Gladiators! Come back soon!");
  }
+};
+
+var shop = function() {
+    //ask player what they'd like to do
+    var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
+    switch (shopOptionPrompt) {
+        case "refill":
+            window.alert("Refilling player's health by 20 for 7 coin.");
+            //increase health and decrease money
+            playerHealth = playerHealth + 20;
+            playerMoney = playerMoney - 7;
+            break;
+        case "upgrade":
+            window.alert("Upgrade attack power by 6 for 7 coin");
+            //increase attack and decrease money    
+            playerAttack = playerAttack +6
+            playerMoney = playerMoney -7
+            break;
+        case "leave":
+            window.alert("Leaving Secret Shop");
+            //do nothing, end function
+            break;
+        default:
+            window.alert("You did not pick a valid option. Try again");
+            //recall shop() pick valid option
+            shop();
+            break    
+    }
 };
   //start the game when the page loads
 startGame();
